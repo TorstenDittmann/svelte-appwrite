@@ -1,6 +1,6 @@
 # WIP: svelte-appwrite
 
-Easy to use [Appwrite](https://appwrite.io/) components for Svelte. Install it with [degit](https://github.com/Rich-Harris/degit):
+Easy to use [Appwrite](https://appwrite.io/) components for Svelte. Install it:
 
 ```bash
 npm install # or yarn
