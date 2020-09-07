@@ -8,7 +8,7 @@ npm install # or yarn
 
 # Example
 
-```javascript
+```svelte
 <script>
   import { Init, User, OAuth2 } from "svelte-appwrite";
 </script>
