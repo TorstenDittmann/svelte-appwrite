@@ -1,5 +1,6 @@
 <script>
   import Appwrite from "../appwrite";
+  import { currentUser } from "../stores";
 
   export let collection;
   export let filters = [];
@@ -27,10 +28,12 @@
     );
 
   const actions = {
-    reload: () => {
-      documents = fetchDocuments();
-    },
-    create: async (data, read = ["*"], write = ["*"]) => {
+    reload: () => (documents = fetchDocuments()),
+    create: async (
+      data,
+      read = [`user:${$currentUser.$id}`],
+      write = [`user:${$currentUser.$id}`]
+    ) => {
       await Appwrite.sdk.database.createDocument(collection, data, read, write);
       actions.reload();
     },

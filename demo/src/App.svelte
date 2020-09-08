@@ -1,5 +1,6 @@
 <script>
-  import { Appwrite, User, OAuth2 } from "svelte-appwrite";
+  import { Appwrite, User, AuthOAuth2 } from "svelte-appwrite";
+  import Login from "./Login.svelte";
   import TodoList from "./TodoList.svelte";
 
   const config = {
@@ -11,18 +12,35 @@
 
 <main>
   <Appwrite {...config}>
-    <User let:user>
+    <User let:user let:actions>
       <h1>Hello {user.name}!</h1>
       <div>{user.email}</div>
+      <button on:click={actions.logout(actions.reload)}>Logout</button>
       <TodoList />
       <div slot="error">
-        <OAuth2
+        <AuthOAuth2
           provider="discord"
           success="http://localhost:5000?success"
           failure="http://localhost:5000?failure"
           let:authorize>
           <button on:click={authorize}>Login Discord</button>
-        </OAuth2>
+        </AuthOAuth2>
+        <AuthOAuth2
+          provider="twitch"
+          success="http://localhost:5000?success"
+          failure="http://localhost:5000?failure"
+          let:authorize>
+          <button on:click={authorize}>Login Twitch</button>
+        </AuthOAuth2>
+        <AuthOAuth2
+          provider="google"
+          success="http://localhost:5000?success"
+          failure="http://localhost:5000?failure"
+          let:authorize>
+          <button on:click={authorize}>Login Google</button>
+        </AuthOAuth2>
+        <hr />
+        <Login on:success={actions.reload} />
       </div>
     </User>
   </Appwrite>
@@ -32,7 +50,7 @@
   main {
     text-align: center;
     padding: 1em;
-    max-width: 240px;
+    max-width: 640px;
     margin: 0 auto;
   }
 
@@ -41,12 +59,6 @@
     text-transform: uppercase;
     font-size: 4em;
     font-weight: 100;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
   }
 
   ul {
