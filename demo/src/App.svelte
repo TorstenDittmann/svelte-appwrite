@@ -1,11 +1,12 @@
 <script>
   import { Appwrite, User, AuthOAuth2 } from "svelte-appwrite";
+import Gallery from "./Gallery.svelte";
   import Login from "./Login.svelte";
   import TodoList from "./TodoList.svelte";
 
   const config = {
     endpoint: "http://localhost/v1",
-    project: "5f4938898667e",
+    project: "5f58031eb3318",
     locale: "de",
   };
 </script>
@@ -17,6 +18,7 @@
       <div>{user.email}</div>
       <button on:click={actions.logout(actions.reload)}>Logout</button>
       <TodoList />
+      <Gallery />
       <div slot="error">
         <AuthOAuth2
           provider="discord"

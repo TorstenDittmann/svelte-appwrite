@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "lint": "eslint src/",
-    "prettier": "prettier --write --plugin-search-dir= ./src/**/*.{js,svelte,json,scss}"
+    "prettier": "prettier --write --plugin-search-dir= ./src/**/*.{js,svelte}"
   },
   "devDependencies": {
     "svelte": "^3.0.0"
