@@ -2,7 +2,7 @@
   import Appwrite from "../appwrite";
   import { currentUser } from "../stores";
 
-  export let collection;
+  export let id;
   export let filters = [];
   export let offset = 0;
   export let limit = 50;
@@ -15,7 +15,7 @@
 
   const fetchDocuments = () =>
     Appwrite.sdk.database.listDocuments(
-      collection,
+      id,
       filters,
       offset,
       limit,
@@ -34,7 +34,7 @@
       read = [`user:${$currentUser.$id}`],
       write = [`user:${$currentUser.$id}`]
     ) => {
-      await Appwrite.sdk.database.createDocument(collection, data, read, write);
+      await Appwrite.sdk.database.createDocument(id, data, read, write);
       actions.reload();
     },
   };
