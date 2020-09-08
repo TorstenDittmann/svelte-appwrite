@@ -1,13 +1,20 @@
 <script>
-  import { Init, User, OAuth2 } from "svelte-appwrite";
+  import { Appwrite, User, OAuth2 } from "svelte-appwrite";
+  import TodoList from "./TodoList.svelte";
+
+  const config = {
+    endpoint: "http://localhost/v1",
+    project: "5f4938898667e",
+    locale: "de",
+  };
 </script>
 
 <main>
-  <Init endpoint="http://localhost/v1" project="5f4938898667e" locale="de">
+  <Appwrite {...config}>
     <User let:user>
       <h1>Hello {user.name}!</h1>
       <div>{user.email}</div>
-
+      <TodoList />
       <div slot="error">
         <OAuth2
           provider="discord"
@@ -18,7 +25,7 @@
         </OAuth2>
       </div>
     </User>
-  </Init>
+  </Appwrite>
 </main>
 
 <style>
@@ -40,5 +47,9 @@
     main {
       max-width: none;
     }
+  }
+
+  ul {
+    list-style: none;
   }
 </style>
