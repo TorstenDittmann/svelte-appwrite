@@ -10,7 +10,7 @@
 </script>
 
 <h2>TodoList</h2>
-<Collection id="5f5803b0ed4f8" let:documents let:actions>
+<Collection id="5f56a3035a01f" let:documents let:actions>
   <form on:submit|preventDefault={addTodo(actions)}>
     <input type="text" placeholder="add todo" bind:value />
   </form>

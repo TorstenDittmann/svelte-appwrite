@@ -6,6 +6,17 @@ Easy to use [Appwrite](https://appwrite.io/) components for Svelte. Install it:
 npm install # or yarn
 ```
 
+# Status
+- [ ] Account
+- [x] Auth
+- [x] Avatars
+- [x] Database
+- [ ] Database (Parent Documents)
+- [x] Locale
+- [x] Storage
+- [ ] Teams
+
+
 # Usage
 
 ## Initialize
