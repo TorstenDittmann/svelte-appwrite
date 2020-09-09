@@ -39,7 +39,14 @@ Must be initialised and wrap every `svelte-appwrite` component.
 </Appwrite>
 ```
 
-## Login Email
+### Properties
+| Name | Description |
+| --- | --- |
+| `endpoint` | Your Appwrite endpoint |
+| `project` | Your project ID |
+| `locale` | _Optional_ The users locale |
+
+## AuthEmail
 
 Login via email and password.
 
@@ -67,6 +74,40 @@ Login via email and password.
 </AuthEmail>
 ```
 
+### Directives
+
+**let:authorize** `function`
+
+Initiates login.
+
+#### Arguments
+| Name | Description |
+| --- | --- |
+| `email` | E-Mail |
+| `password` | Password |
+
+### Events
+
+**on:success**
+
+Triggers on successful login.
+
+#### Arguments
+| Name | Description |
+| --- | --- |
+| `email` | E-Mail |
+| `password` | Password |
+
+**on:failure**
+
+Triggers on failed login.
+
+#### Arguments
+| Name | Description |
+| --- | --- |
+| `email` | E-Mail |
+| `password` | Password |
+
 ## Login OAuth2
 
 Login via an OAuth2 provider.
@@ -84,6 +125,19 @@ Login via an OAuth2 provider.
   <button on:click={authorize}>Login Google</button>
 </AuthOAuth2>
 ```
+
+### Properties
+| Name | Description |
+| --- | --- |
+| `provider` | Your Appwrite endpoint |
+| `success` | Your project ID |
+| `failure` | _Optional_ The users locale |
+
+### Directives
+
+**let:authorize** `function`
+
+Initiates OAuth2 login.
 
 ## Get user
 
@@ -104,9 +158,15 @@ Requests current user to check if logged in.
 </User>
 ```
 
+### Directives
+
+**let:user** `object`
+
+Get currently logged in user data.
+
 ## Get Collection
 
-Get a list of all the user documents from a collection.
+Get a list of all the documents from a collection.
 
 ```svelte
 <script>
@@ -114,13 +174,35 @@ Get a list of all the user documents from a collection.
 </script>
 
 <Collection collection="5f56a3035a01f" let:documents>
-  You have {documents.length} documents :)
+  You have {documents.length} documents.
 </Collection>
 ```
 
+### Properties
+| Name | Description |
+| --- | --- |
+| `collection` | Collection unique ID. |
+| _additional_ | same as [here](https://appwrite.io/docs/client/database#listDocuments) |
+
+### Directives
+
+**let:documents** `array`
+
+Array of documents.
+
+**let:actions** `object`
+
+Object with function.
+
+#### Arguments
+| Name | Description |
+| --- | --- |
+| `reload()` | Re-fetch collection. |
+| `create(data, read, write)` | Create a new Document in the collection. `read`/`write` is optional and current user by default. |
+
 ## Get Document
 
-Get a document. If you pass the `document` property with data from <Collection />, there wont be any data fetched.
+Get a document. If you pass the `document` property with data from <Collection />, there wont be any data requested.
 
 ```svelte
 <script>
@@ -132,6 +214,34 @@ Get a document. If you pass the `document` property with data from <Collection /
   Text: {document.text}
 </Document>
 ```
+### Properties
+| Name | Description |
+| --- | --- |
+| `id` | Document unique ID |
+| or |
+| `document` | Document passed from `<Collection />` |
+
+### Directives
+
+**let:document** `object`
+
+A JSON object with the document data.
+
+**let:actions** `object`
+
+Object with function.
+
+#### Arguments
+| Name | Description |
+| --- | --- |
+| `update(data)` | Update the document. |
+| `remove()` | Deletes the document. |
+
+### Events
+
+**on:change**
+
+Triggers on update or remove login.
 
 # Example
 
