@@ -1,8 +1,7 @@
 <script>
   import Appwrite from "../appwrite";
 
-  const fetchUserLocale = () =>
-    Appwrite.sdk.locale.get();
+  const fetchUserLocale = () => Appwrite.sdk.locale.get();
 
   const actions = {
     reload: () => (locale = fetchUserLocale()),
