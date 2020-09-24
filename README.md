@@ -7,7 +7,7 @@ npm install # or yarn
 ```
 
 # Status
-- [ ] Account
+- [x] Account
 - [x] Auth
 - [x] Avatars
 - [x] Database

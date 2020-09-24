@@ -1,5 +1,12 @@
 export { default as Appwrite } from "./Init.svelte";
-export { default as User } from "./User.svelte";
+
+export { default as User } from "./Account/User.svelte";
+export { default as Create } from "./Account/Create.svelte";
+export { default as Delete } from "./Account/Delete.svelte";
+export { default as Preferences } from "./Account/Preferences.svelte";
+export { default as RecoverPassword } from "./Account/RecoverPassword.svelte";
+export { default as Update } from "./Account/Update.svelte";
+export { default as Verification } from "./Account/Verification.svelte";
 
 export { default as AuthEmail } from "./Auth/Email.svelte";
 export { default as AuthOAuth2 } from "./Auth/OAuth2.svelte";
