@@ -40,6 +40,8 @@ Must be initialised and wrap every `svelte-appwrite` component.
 ```
 
 ### Properties
+| Name | Description |
+| --- | --- |
 | `endpoint` | Your Appwrite endpoint |
 | `project` | Your project ID |
 | `locale` | _Optional_ The users locale |
@@ -79,6 +81,8 @@ Login via email and password.
 Initiates login.
 
 #### Arguments
+| Name | Description |
+| --- | --- |
 | `email` | E-Mail |
 | `password` | Password |
 
@@ -89,7 +93,8 @@ Initiates login.
 Triggers on successful login.
 
 #### Arguments
-
+| Name | Description |
+| --- | --- |
 | `email` | E-Mail |
 | `password` | Password |
 
@@ -98,7 +103,8 @@ Triggers on successful login.
 Triggers on failed login.
 
 #### Arguments
-
+| Name | Description |
+| --- | --- |
 | `email` | E-Mail |
 | `password` | Password |
 
@@ -121,6 +127,8 @@ Login via an OAuth2 provider.
 ```
 
 ### Properties
+| Name | Description |
+| --- | --- |
 | `provider` | Your Appwrite endpoint |
 | `success` | Your project ID |
 | `failure` | _Optional_ The users locale |
@@ -171,6 +179,8 @@ Get a list of all the documents from a collection.
 ```
 
 ### Properties
+| Name | Description |
+| --- | --- |
 | `collection` | Collection unique ID. |
 | _additional_ | same as [here](https://appwrite.io/docs/client/database#listDocuments) |
 
@@ -185,8 +195,10 @@ Array of documents.
 Object with function.
 
 #### Arguments
+| Name | Description |
+| --- | --- |
 | `reload()` | Re-fetch collection. |
-| `create(data, read, write)` | Create a new Document in the collection. If `read` or `write` isn't set, it falls back to currently logged in user. |
+| `create(data, read, write)` | Create a new Document in the collection. `read`/`write` is optional and current user by default. |
 
 ## Get Document
 
@@ -203,6 +215,8 @@ Get a document. If you pass the `document` property with data from <Collection /
 </Document>
 ```
 ### Properties
+| Name | Description |
+| --- | --- |
 | `id` | Document unique ID |
 | or |
 | `document` | Document passed from `<Collection />` |
@@ -218,6 +232,8 @@ A JSON object with the document data.
 Object with function.
 
 #### Arguments
+| Name | Description |
+| --- | --- |
 | `update(data)` | Update the document. |
 | `remove()` | Deletes the document. |
 
